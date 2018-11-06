@@ -8,6 +8,7 @@ var express = require('express');
 var bodyParser = require('body-parser'); 
 
 var app = express(); 
+const port = process.env.PORT || 3000; 
 
 app.use(bodyParser.json()); 
 app.post('/todos', (req, res) => {
@@ -45,24 +46,10 @@ app.get('/todos/:id', (req, res) => {
     res.status(400).send(); 
   });  
 
-
-
-
-  // validate id
-  // not valid : return an error and a 404 empty body
-
-  // query using findbyid
-  //  if invalid send 404 and send back nothing 
-  //  if valid send todo back
-
-  // if no todo, then send back 404 empty body
-
 });
 
-app.listen(3000, () => {
-  console.log("started on port 3000"); 
+app.listen(port, () => {
+  console.log(`Started on port ${port}`); 
 }); 
 
 module.exports = {app}; 
-//new user model 
-// property email required and trim it string minlenght 1
